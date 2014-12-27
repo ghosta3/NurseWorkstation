@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NurseBegin" table="NURSE_BEGIN_TAB" schema="SCOTT">
+        <id name="beginId" type="java.lang.Integer">
+            <column name="BEGIN_ID" precision="6" scale="0" />
+            <generator class="sequence">
+            	<param name="sequence">BEGIN_SEQ</param>
+            </generator>
+        </id>
+        <many-to-one name="officeDepartment" class="com.neusoft.common.domain.OfficeDepartment" fetch="select">
+            <column name="OFFICE_ID" length="4" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nurseBed" class="com.neusoft.common.domain.NurseBed" fetch="select">
+            <column name="BED_ID" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nursePat" class="com.neusoft.common.domain.NursePat" fetch="select">
+            <column name="PAT_ID" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nurseWork" class="com.neusoft.common.domain.NurseWork" fetch="select">
+            <column name="WORK_ID" length="5" not-null="true" />
+        </many-to-one>
+        <property name="beginTime" type="java.util.Date">
+            <column name="BEGIN_TIME" length="7" />
+        </property>
+        <property name="depoMoney" type="java.lang.Double">
+            <column name="DEPO_MONEY" precision="8" />
+        </property>
+        <property name="leftMoney" type="java.lang.Double">
+            <column name="LEFT_MONEY" precision="8" />
+        </property>
+    </class>
+</hibernate-mapping>

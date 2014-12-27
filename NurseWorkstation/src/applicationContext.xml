@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver">
+		</property>
+		<property name="url" value="jdbc:oracle:thin:@192.168.191.4:1521:orcl">
+		</property>
+		<property name="username" value="scott"></property>
+		<property name="password" value="scott"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.OracleDialect
+				</prop>
+				<prop key="show_sql">
+					true
+				</prop>
+				<prop key="hibernate.connection.driver_class">
+					oracle.jdbc.driver.OracleDriver
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>
+					com/neusoft/common/domain/NursePat.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseAdv.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseConsumInfo.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/OfficeDepartment.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseWork.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/HospitalDischarge.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseDrug.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/ResidentApply.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/HospitalBedlevel.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseBed.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseAdving.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseBegin.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseConsum.hbm.xml
+				</value>
+				<value>
+					com/neusoft/common/domain/NurseRoom.hbm.xml
+				</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="hospitalBedlevelDAO" class="com.neusoft.common.dao.impl.HospitalBedlevelDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="hospitalDischargeDAO" class="com.neusoft.common.dao.impl.HospitalDischargeDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseAdvDAO" class="com.neusoft.common.dao.impl.NurseAdvDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseAdvingDAO" class="com.neusoft.common.dao.impl.NurseAdvingDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseBedDAO" class="com.neusoft.common.dao.impl.NurseBedDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseBeginDAO" class="com.neusoft.common.dao.impl.NurseBeginDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseConsumDAO" class="com.neusoft.common.dao.impl.NurseConsumDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseConsumInfoDAO" class="com.neusoft.common.dao.impl.NurseConsumInfoDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseDrugDAO" class="com.neusoft.common.dao.impl.NurseDrugDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nursePatDAO" class="com.neusoft.common.dao.impl.NursePatDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseRoomDAO" class="com.neusoft.common.dao.impl.NurseRoomDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="nurseWorkDAO" class="com.neusoft.common.dao.impl.NurseWorkDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="officeDepartmentDAO" class="com.neusoft.common.dao.impl.OfficeDepartmentDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="residentApplyDAO" class="com.neusoft.common.dao.impl.ResidentApplyDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- Action Begin -->
+	<bean id="ResidentAction" class="com.neusoft.patientio.action.ResidentAction" scope="prototype">
+		<property name="residentService">
+			<ref bean="residentService" />
+		</property>
+	</bean>
+	<!-- Action End -->
+	<!-- Service Begin -->
+	<bean id="residentService" class="com.neusoft.patientio.service.impl.ResidentServiceImpl">
+		<property name="residentApplyDAO">
+			<ref bean="residentApplyDAO" />
+		</property>
+		<property name="nurseBeginDAO">
+			<ref bean="nurseBeginDAO" />
+		</property>
+		<property name="officeDepartmentDAO">
+			<ref bean="officeDepartmentDAO" />
+		</property>
+	</bean>
+	<!-- Service End -->
+</beans>

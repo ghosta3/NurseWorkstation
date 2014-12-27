@@ -1,0 +1,20 @@
+#MyEclipse Hibernate Properties
+#Thu Dec 25 00:34:15 CST 2014
+genBasicCompId=false
+sessionFactoryName=com.neusoft.nurseworkstation.hibernate.HibernateSessionFactory
+profile=
+daoSFId=sessionFactory
+jndiPath=
+detectM2M=true
+reStrategyClass=
+detectO2O=true
+springDaoFile=src/applicationContext.xml
+useJavaTypes=true
+keyGenerator=native
+genVersionTag=true
+sessionFactoryId=sessionFactory
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=
+configFile=/NurseWorkstation/src/applicationContext.xml
+createConfigFile=true

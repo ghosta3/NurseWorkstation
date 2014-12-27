@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NurseAdv" table="NURSE_ADV_TAB" schema="SCOTT">
+        <id name="advId" type="java.lang.String">
+            <column name="ADV_ID" length="21" />
+        </id>
+        <many-to-one name="nursePat" class="com.neusoft.common.domain.NursePat" fetch="select">
+            <column name="PAT_ID" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nurseWork" class="com.neusoft.common.domain.NurseWork" fetch="select">
+            <column name="WORK_ID" length="5" not-null="true" />
+        </many-to-one>
+        <property name="advText" type="java.lang.String">
+            <column name="ADV_TEXT" length="1000" />
+        </property>
+        <property name="advBigTime" type="java.util.Date">
+            <column name="ADV_BIG_TIME" length="7" />
+        </property>
+        <property name="advEndTime" type="java.util.Date">
+            <column name="ADV_END_TIME" length="7" />
+        </property>
+        <property name="advStat" type="java.lang.String">
+            <column name="ADV_STAT" length="1" />
+        </property>
+        <set name="nurseAdvings" inverse="true">
+            <key>
+                <column name="ADV_ID" length="21" not-null="true" />
+            </key>
+            <one-to-many class="com.neusoft.common.domain.NurseAdving" />
+        </set>
+    </class>
+</hibernate-mapping>

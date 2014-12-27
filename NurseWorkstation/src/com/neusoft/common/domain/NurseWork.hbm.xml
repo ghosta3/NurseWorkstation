@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NurseWork" table="NURSE_WORK_TAB" schema="SCOTT">
+        <id name="workId" type="java.lang.String">
+            <column name="WORK_ID" length="5" />
+            <generator class="sequence">
+            	<param name="sequence">WORK_SEQ</param>
+            </generator>
+        </id>
+        <property name="workPsw" type="java.lang.String">
+            <column name="WORK_PSW" length="20" not-null="true" />
+        </property>
+        <property name="workName" type="java.lang.String">
+            <column name="WORK_NAME" length="20" not-null="true" />
+        </property>
+        <property name="workJob" type="java.lang.String">
+            <column name="WORK_JOB" length="20" />
+        </property>
+<!--         <set name="nurseAdvings" inverse="true"> -->
+<!--             <key> -->
+<!--                 <column name="WORK_ID" length="5" not-null="true" /> -->
+<!--             </key> -->
+<!--             <one-to-many class="com.neusoft.common.domain.NurseAdving" /> -->
+<!--         </set> -->
+<!--         <set name="nurseAdvs" inverse="true"> -->
+<!--             <key> -->
+<!--                 <column name="WORK_ID" length="5" not-null="true" /> -->
+<!--             </key> -->
+<!--             <one-to-many class="com.neusoft.common.domain.NurseAdv" /> -->
+<!--         </set> -->
+<!--         <set name="hospitalDischarges" inverse="true"> -->
+<!--             <key> -->
+<!--                 <column name="WORK_ID" length="5" not-null="true" /> -->
+<!--             </key> -->
+<!--             <one-to-many class="com.neusoft.common.domain.HospitalDischarge" /> -->
+<!--         </set> -->
+<!--         <set name="nurseBegins" inverse="true"> -->
+<!--             <key> -->
+<!--                 <column name="WORK_ID" length="5" not-null="true" /> -->
+<!--             </key> -->
+<!--             <one-to-many class="com.neusoft.common.domain.NurseBegin" /> -->
+<!--         </set> -->
+    </class>
+</hibernate-mapping>

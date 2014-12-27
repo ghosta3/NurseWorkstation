@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NurseAdving" table="NURSE_ADVING_TAB" schema="SCOTT">
+        <id name="advingId" type="java.lang.String">
+            <column name="ADVING_ID" length="21" />
+        </id>
+        <many-to-one name="nursePat" class="com.neusoft.common.domain.NursePat" fetch="select">
+            <column name="PAT_ID" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nurseWork" class="com.neusoft.common.domain.NurseWork" fetch="select">
+            <column name="WORK_ID" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nurseAdv" class="com.neusoft.common.domain.NurseAdv" fetch="select">
+            <column name="ADV_ID" length="21" not-null="true" />
+        </many-to-one>
+        <property name="advingDate" type="java.util.Date">
+            <column name="ADVING_DATE" length="7" />
+        </property>
+        <property name="advingSign" type="java.lang.String">
+            <column name="ADVING_SIGN" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

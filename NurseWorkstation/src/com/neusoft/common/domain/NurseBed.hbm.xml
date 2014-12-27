@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.neusoft.common.domain.NurseBed" schema="SCOTT" table="NURSE_BED_TAB">
+  <id name="bedId" type="java.lang.String">
+   <column length="5" name="BED_ID"/>
+   <generator class="sequence">
+    <param name="sequence">BED_SEQ</param>
+   </generator>
+  </id>
+  <many-to-one class="com.neusoft.common.domain.OfficeDepartment"
+   fetch="select" name="officeDepartment">
+   <column length="4" name="OFFICE_ID" not-null="true"/>
+  </many-to-one>
+  <many-to-one class="com.neusoft.common.domain.HospitalBedlevel"
+   fetch="select" name="hospitalBedlevel">
+   <column name="LEVEL_ID" precision="2" scale="0"/>
+  </many-to-one>
+  <many-to-one class="com.neusoft.common.domain.NurseRoom"
+   fetch="select" lazy="false" name="nurseRoom">
+   <column length="5" name="ROOM_ID"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="bedState" type="java.lang.Byte">
+   <column name="BED_STATE" precision="2" scale="0"/>
+  </property>
+ </class>
+</hibernate-mapping>

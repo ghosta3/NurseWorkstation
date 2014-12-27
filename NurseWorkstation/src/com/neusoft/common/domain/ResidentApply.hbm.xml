@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.neusoft.common.domain.ResidentApply" schema="SCOTT" table="RESIDENT_APPLY_TAB">
+  <id name="patId" type="java.lang.String">
+   <column length="5" name="PAT_ID"/>
+  </id>
+  <one-to-one class="com.neusoft.common.domain.NursePat"
+   constrained="true" lazy="false" name="nursePat"/>
+	<many-to-one class="com.neusoft.common.domain.OfficeDepartment"
+		fetch="select" lazy="false" name="officeDepartment">
+   <column length="4" name="OFFIC_ID" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="workId" type="java.lang.String">
+   <column length="5" name="WORK_ID" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="resState" type="java.lang.String">
+   <column length="1" name="RES_STATE" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

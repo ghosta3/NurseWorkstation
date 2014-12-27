@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NurseConsum" table="NURSE_CONSUM_TAB" schema="SCOTT">
+        <id name="conId" type="java.lang.String">
+            <column name="CON_TAB_ID" length="5" />
+            <generator class="sequence">
+            	<param name="sequence">CONSUM_SEQ</param>
+            </generator>
+        </id>
+        <many-to-one name="nursePat" class="com.neusoft.common.domain.NursePat" fetch="select">
+            <column name="PAT_ID" length="5" not-null="true" />
+        </many-to-one>
+        <property name="conCost" type="java.lang.Double">
+            <column name="CON_COST" precision="8" />
+        </property>
+        <property name="beginTime" type="java.util.Date">
+            <column name="BEGIN_TIME" length="7" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

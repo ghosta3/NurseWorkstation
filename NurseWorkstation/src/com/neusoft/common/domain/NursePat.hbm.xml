@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NursePat" table="NURSE_PAT_TAB" schema="SCOTT">
+        <id name="patId" type="java.lang.String">
+            <column name="PAT_ID" length="5" />
+            <generator class="sequence">
+            	<param name="sequence">PAT_SEQ</param>
+            </generator>
+        </id>
+        <property name="patName" type="java.lang.String">
+            <column name="PAT_NAME" length="20" not-null="true" />
+        </property>
+        <property name="patSex" type="java.lang.String">
+            <column name="PAT_SEX" length="2" />
+        </property>
+        <property name="patAge" type="java.lang.Byte">
+            <column name="PAT_AGE" precision="2" scale="0" />
+        </property>
+        <property name="patBirthday" type="java.util.Date">
+            <column name="PAT_BIRTHDAY" length="7" />
+        </property>
+        <property name="patCertificate" type="java.lang.String">
+            <column name="PAT_CERTIFICATE" length="18" />
+        </property>
+        <property name="parServDate" type="java.util.Date">
+            <column name="PAR_SERV_DATE" length="7" />
+        </property>
+        <one-to-one name="residentApply" class="com.neusoft.common.domain.ResidentApply"></one-to-one>
+        <one-to-one name="hospitalDischarge" class="com.neusoft.common.domain.HospitalDischarge"></one-to-one>
+        <set name="nurseBegins" inverse="true">
+            <key>
+                <column name="PAT_ID" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.neusoft.common.domain.NurseBegin" />
+        </set>
+        <set name="nurseConsumInfos" inverse="true">
+            <key>
+                <column name="PAT_ID" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.neusoft.common.domain.NurseConsumInfo" />
+        </set>
+        <set name="nurseConsums" inverse="true">
+            <key>
+                <column name="PAT_ID" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.neusoft.common.domain.NurseConsum" />
+        </set>
+        <set name="nurseAdvs" inverse="true">
+            <key>
+                <column name="PAT_ID" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.neusoft.common.domain.NurseAdv" />
+        </set>
+        <set name="nurseAdvings" inverse="true">
+            <key>
+                <column name="PAT_ID" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.neusoft.common.domain.NurseAdving" />
+        </set>
+    </class>
+</hibernate-mapping>

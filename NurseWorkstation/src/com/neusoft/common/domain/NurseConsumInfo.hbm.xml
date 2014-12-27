@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NurseConsumInfo" table="NURSE_CONSUM_INFO_TAB" schema="SCOTT">
+        <id name="consumInfoId" type="java.lang.String">
+            <column name="CONSUM_INFO_ID" length="21"/>
+        </id>
+        <many-to-one name="nurseDrug" class="com.neusoft.common.domain.NurseDrug" fetch="select">
+            <column name="DRUG_ID" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nursePat" class="com.neusoft.common.domain.NursePat" fetch="select">
+            <column name="PAT_ID" length="5" not-null="true" />
+        </many-to-one>
+        <property name="drugNum" type="java.lang.Short">
+            <column name="DRUG_NUM" precision="4" scale="0" />
+        </property>
+        <property name="otherCost" type="java.lang.Double">
+            <column name="OTHER_COST" precision="8" />
+        </property>
+        <property name="constTime" type="java.util.Date">
+            <column name="CONST_TIME" length="7" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

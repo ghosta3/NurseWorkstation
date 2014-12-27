@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.neusoft.common.domain.NurseRoom" table="NURSE_ROOM_TAB" schema="SCOTT">
+        <id name="roomId" type="java.lang.String">
+            <column name="ROOM_ID" length="5" />
+            <generator class="sequence">
+            	<param name="sequence">ROOM_SEQ</param>
+            </generator>
+        </id>
+        <property name="roomInfo" type="java.lang.String">
+            <column name="ROOM_INFO" length="64" />
+        </property>
+        <set name="nurseBeds" inverse="true">
+            <key>
+                <column name="ROOM_ID" length="5" />
+            </key>
+            <one-to-many class="com.neusoft.common.domain.NurseBed" />
+        </set>
+    </class>
+</hibernate-mapping>
