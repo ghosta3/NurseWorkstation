@@ -212,4 +212,10 @@
 	<bean id="DCAction" class="com.neusoft.pat.action.DCAction">
 		<property name="nurseConsumInfoService" ref="nurseConsumInfoService"/>
 	</bean>
+	<bean id="nurseAdvingService" class="com.neusoft.pat.service.impl.NurseAdvingServiceImpl">
+		<property name="nurseAdvingDAO" ref="nurseAdvingDAO"/>
+	</bean>
+	<bean id="CheckAdvingAction" class="com.neusoft.pat.action.CheckAdvingAction">
+		<property name="nurseAdvingService" ref="nurseAdvingService"/>
+	</bean>
 </beans>

@@ -25,9 +25,18 @@
 			<result name="success">/WEB-INF/jsp/pat/decuteMoney.jsp</result>
 		</action>
 		<action name="dcMoney" class="com.neusoft.pat.action.DCAction">
-			<result name="success">/WEB-INF/jsp/pat/decuteMoney.jsp</result>
+			<!-- <result name="success">/WEB-INF/jsp/pat/decuteMoney.jsp</result> -->
+			<result name="success" type="redirectAction">decuteMoney</result>
 		</action>
-		
+		<action name="drugDetail" class="com.neusoft.pat.action.DrugDetailAction">
+			<result name="success">/WEB-INF/jsp/pat/detailDrug.jsp</result>
+		</action>
+		<action name="checkAdv" class="com.neusoft.pat.action.CheckAdvAction">
+			<result name="success">/WEB-INF/jsp/pat/advList.jsp</result>
+		</action>
+		<action name="checkAdving" class="com.nurse.pat.action.CheckAdvingAction">
+			<result name="success">/WEB-INF/jsp/pat/advingList.jsp</result>
+		</action>
 		
 		
 		

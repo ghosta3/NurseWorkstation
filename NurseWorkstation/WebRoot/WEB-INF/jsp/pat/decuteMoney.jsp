@@ -6,22 +6,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <div class="pageHeader">
 <p>每日划价：</p>
-<form method="post" action="pat/decuteMoneyDay" onsubmit="return navTabSearch(this)">
+<form onsubmit="return navTabSearch(this);" action="pat/decuteMoneyDay" method="post">
+<div class="searchBar">
+
   <p>病人姓名：
   <input type="text" name="patName"/>
-科室名称：
-<input type="text" name="officeName"/>
   </p>
   <p>主治医生：
-    <input type="text" name="workName"/>
-    病房号：&nbsp;&nbsp;
-    <input type="text" name="roomName"/>&nbsp;&nbsp;<input type="submit" value="查询" />
+    <input type="text" name="workName"/><input type="submit" value="查询" />
   </p>
+  </div>
+  
 </form>
 <p>&nbsp;</p>
 </div>
 <hr/>
-<table class="table">
+<div class="pageContent">
+<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="demo_page4.html" target="navTab"><span>添加</span></a></li>
+			<li><a class="delete" href="pat/dcMoney.action?drugId=%{drug.drugId}&&patId=%{#dm.nursePat.patId}&&consumMoney=%{drug.drugPrice+listBegin[#st.index].nurseBed.hospitalBedlevel.levelPrice}" target="ajaxTodo" title="确定要划价吗?"><span>划价</span></a></li>
+			<li><a class="edit" href="demo_page4.html?uid={sid_user}" target="navTab"><span>修改</span></a></li>
+			<li class="line">line</li>
+			<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+		</ul>
+</div>
+<table id="advlist" class="table" width="100%">
 <thead>
   <tr>
     <th >病人姓名</th>
@@ -36,37 +46,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </thead>
   <tbody>
  	<s:iterator value="listAdv" id="dm" status="st">
+ 	<tr>
 		<td><s:property value="#dm.nursePat.patName" /></td>
 		<td><s:property value="#dm.nurseWork.workName" /></td>
-		<td><s:a target="dialog" href="pat/drugDetail.action?drugName=%{drug.drugName}">药物详细</s:a></td>
-		<td><s:property value="drug.drugPrice"/></td>
+		<td><s:a target="dialog" href="pat/drugDetail.action?drugId=%{drug[#st.index].drugId}">药物详细</s:a></td>
+		<td><s:property value="%{drug[#st.index].drugPrice}"/> </td>
 		<td><s:property value="%{listBegin[#st.index].nurseBed.hospitalBedlevel.levelPrice}" /></td>
-		<td><s:a onsubmit="return navTabSearch(this);" href="pat/dcMoney.action?drugId=%{drug.drugId}&&patId=%{#dm.nursePat.patId}&&consumMoney=%{drug.drugPrice+listBegin[#st.index].nurseBed.hospitalBedlevel.levelPrice}">划价</s:a></td>
+		<td><s:a href="pat/dcMoney.action?drugId=%{drug.drugId}&&patId=%{#dm.nursePat.patId}&&consumMoney=%{drug[#st.index].drugPrice+listBegin[#st.index].nurseBed.hospitalBedlevel.levelPrice}">划价</s:a></td>
+ 	</tr>
  	</s:iterator>
   </tbody>
 </table>
-<p>&nbsp;</p>
-<hr/>
-<p>&nbsp;</p>
-<p>药物划价详细： </p>
-<table class="table">
-<thead>
-  <tr>
-    <th bgcolor="#f5f5f5" scope="col">药物名称</th>
-    <th bgcolor="#f5f5f5" scope="col">用量</th>
-    <th bgcolor="#f5f5f5" scope="col">价格</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>抗菌素</td>
-    <td>20ml</td>
-    <td>20.00元</td>
-  </tr>
-  <tr>
-    <td>安乃近</td>
-    <td>1片</td>
-    <td>0.30元</td>
-  </tr>
-  </tbody>
-</table>
+</div>

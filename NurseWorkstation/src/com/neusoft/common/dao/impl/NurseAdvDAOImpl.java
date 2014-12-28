@@ -20,10 +20,9 @@ public class NurseAdvDAOImpl extends BaseDAOImpl<String, NurseAdv> implements Nu
 	}
 
 	@Override
-	public List<NurseAdv> findAdv(String patName, String officeName,
-			String workName, String roomName) {
+	public List<NurseAdv> findAdv(String patName,String workName) {
 		// TODO Auto-generated method stub
-		String hql = "from NurseAdv as na where ";
+		String hql = "from NurseAdv as na where na.advStat = '0' and ";
 		
 		if(patName.length() > 0){
 			hql = hql + " na.nursePat.patName like '%" + patName + "%' and ";
@@ -35,6 +34,7 @@ public class NurseAdvDAOImpl extends BaseDAOImpl<String, NurseAdv> implements Nu
 		      hql=hql.substring(0,hql.lastIndexOf("and ")) ;
 		if(hql.lastIndexOf("where ")==hql.length() -6)
 		      hql=hql.substring(0,hql.lastIndexOf("where ")) ;
+		
 		System.out.println(hql);
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Query query = session.createQuery(hql);

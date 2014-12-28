@@ -66,4 +66,16 @@ public class NurseBeginServiceImpl implements NurseBeginService  {
 		return this.nurseBeginDAO.findNurseBeginByPatOrWork(patName, workName);
 	}
 
+	@Override
+	public void changeLeftMoney(String patId, Double consumMoney) {
+		// TODO Auto-generated method stub
+		//通过patId查找到对于的住院登记表
+		NurseBegin begin =  this.nurseBeginDAO.findBeginByPatId(patId);
+		Double beforeMoney = begin.getDepoMoney();
+		begin.setDepoMoney(beforeMoney-consumMoney);
+		this.nurseBeginDAO.update(begin);
+		//更改住院登记表余额
+		
+	}
+
 }
