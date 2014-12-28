@@ -82,15 +82,19 @@ public class DCAction extends ActionSupport {
 	public void setNurseAdvService(NurseAdvService nurseAdvService) {
 		this.nurseAdvService = nurseAdvService;
 	}
+	
+	private NurseBeginService nurseBeginService;
+	
+	public void setNurseBeginService(NurseBeginService nurseBeginService) {
+		this.nurseBeginService = nurseBeginService;
+	}
 	@Override
     public String execute() throws Exception {
-    	// TODO Auto-generated method stub
 		
-		System.out.println(patName+"0321");
 		//消费明细表中插入一条数据
-		this.nurseConsumInfoService.saveConsumInfo(patId, drugId,consumMoney);
+//		this.nurseConsumInfoService.saveConsumInfo(patId, drugId,consumMoney);
 		//医嘱信息表中执行状态更改为已执行
-		this.nurseAdvService.changeAdvStat(patId);
+//		this.nurseAdvService.changeAdvStat(patId);
 		//住院登记表中余额扣费
 //		this.nurseBeginService.changeLeftMoney(patId,consumMoney);
     	return "success";

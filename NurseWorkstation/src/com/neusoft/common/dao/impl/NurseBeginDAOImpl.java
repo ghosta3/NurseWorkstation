@@ -11,6 +11,7 @@ import com.neusoft.common.dao.ifac.HospitalDischargeDAO;
 import com.neusoft.common.dao.ifac.NurseBeginDAO;
 import com.neusoft.common.domain.HospitalBedlevel;
 import com.neusoft.common.domain.HospitalDischarge;
+import com.neusoft.common.domain.NurseAdv;
 import com.neusoft.common.domain.NurseBegin;
 
 public class NurseBeginDAOImpl extends
@@ -67,6 +68,18 @@ String hql = "from NurseBegin as nb where ";
 		Query query = session.createQuery(hql);
 		System.out.println(query.list().size());
 		return query.list();
+	}
+
+	@Override
+	public NurseBegin findBeginByPatId(String patId) {
+		// TODO Auto-generated method stub
+		String hql = "from NurseBegin as nb where nb.nursePat.patId = ?";
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+		query.setParameter(0, patId);
+		
+		NurseBegin begin = (NurseBegin) query.list().get(0);
+		return begin;
 	}
 
 }

@@ -15,10 +15,9 @@ public class NurseAdvServiceImpl implements NurseAdvService {
 	}
 
 	@Override
-	public List<NurseAdv> findAdv(String patName, String officeName,
-			String workName, String roomName) {
+	public List<NurseAdv> findAdv(String patName,String workName) {
 		// TODO Auto-generated method stub
-		return this.nurseAdvDAO.findAdv(patName, officeName, workName, roomName);
+		return this.nurseAdvDAO.findAdv(patName,workName);
 	}
 
 	@Override

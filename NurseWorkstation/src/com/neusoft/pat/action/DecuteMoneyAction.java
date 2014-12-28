@@ -19,13 +19,13 @@ public class DecuteMoneyAction extends ActionSupport {
 	private String roomName;
 	private List<NurseAdv> listAdv;
 	private List<NurseBegin> listBegin;
-	private NurseDrug drug;
+	private List<NurseDrug> drug = new ArrayList<NurseDrug>();
 
-	public NurseDrug getDrug() {
+	public List<NurseDrug> getDrug() {
 		return drug;
 	}
 
-	public void setDrug(NurseDrug drug) {
+	public void setDrug(List<NurseDrug> drug) {
 		this.drug = drug;
 	}
 
@@ -97,22 +97,21 @@ public class DecuteMoneyAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
 		/**
 		 * 从医嘱信息表中得到药物详细
 		 * 从住院登记表中得到病人住院信息--床位费
 		 */
-		String bedId = null;
-		String roomId = null;
 		//获得医嘱信息表内容
-		listAdv = this.nurseAdvService.findAdv(patName, officeName, workName, roomName);
+		listAdv = this.nurseAdvService.findAdv(patName,workName);
 		//获得住院登记表内容
 		listBegin = this.nurseBeginService.findNurseBeginByPatOrWork(patName, workName);
 		//获得药物信息表内容
-		String drugName = listAdv.get(0).getAdvText();
-		drug = this.nurseDrugService.findDrugPriceByName(drugName);
-		System.out.println(drug.getDrugPrice() + "ppppp");
-//		this.nurseBeginService.findNurseBegin(patName, bedId, roomId, workName);
+		for(int i = 0 ; i< listAdv.size();i++){   
+            
+			String drugName = listAdv.get(i).getAdvText();
+			drug.add(this.nurseDrugService.findDrugPriceByName(drugName));
+        }
+		
 		return SUCCESS;
 	}
 

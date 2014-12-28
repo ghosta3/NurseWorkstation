@@ -25,5 +25,6 @@ public interface NurseBeginService {
 	public List <NurseBegin> findNurseBegin(String patName, String bedId, String roomId);
 
 	public List<NurseBegin> findNurseBeginByPatOrWork(String patName, String workName);
+	public void changeLeftMoney(String patId, Double consumMoney);
 
 }
