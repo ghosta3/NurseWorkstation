@@ -182,4 +182,34 @@
    		<property name="hospitalBedlevelDAO" ref="hospitalBedlevelDAO"/>
 	</bean>
 	<!-- Service End -->
+	
+	
+	<!--  pou  -->
+	<bean id="nurseDrugService" class="com.neusoft.pat.service.impl.NurseDrugServiceImpl">
+		<property name="nurseDrugDAO" ref="nurseDrugDAO" />
+	</bean>
+	<bean id="nurseBeginService" class="com.neusoft.pat.service.impl.NurseBeginServiceImpl">
+		<property name="nurseBeginDAO" ref="nurseBeginDAO" />
+	</bean>
+	<bean id="nurseConsumInfoService" class="com.neusoft.pat.service.impl.NurseConsumInfoServiceImpl">
+		<property name="nurseConsumInfoDAO" ref="nurseConsumInfoDAO" />
+		<property name="nursePatDAO" ref="nursePatDAO" />
+		<property name="nurseDrugDAO" ref="nurseDrugDAO"/>
+	</bean>
+	<bean id="nurseConsumInfoAction" class="com.neusoft.pat.action.CheckMoney">
+		<property name="nurseConsumInfoService" ref="nurseConsumInfoService" />
+	</bean>
+	<bean id="checkMoneyDetailAction" class="com.neusoft.pat.action.CheckMoneyDetail">
+		<property name="nurseConsumInfoService" ref="nurseConsumInfoService" />
+	</bean>
+	<bean id="nurseAdvService" class="com.neusoft.pat.service.impl.NurseAdvServiceImpl">
+		<property name="nurseAdvDAO" ref="nurseAdvDAO" />
+	</bean>
+	<bean id="DecuteAdvAction" class="com.neusoft.pat.action.DecuteMoneyAction">
+		<property name="nurseAdvService" ref="nurseAdvService"/>
+		<property name="nurseDrugService" ref="nurseDrugService" />
+	</bean>
+	<bean id="DCAction" class="com.neusoft.pat.action.DCAction">
+		<property name="nurseConsumInfoService" ref="nurseConsumInfoService"/>
+	</bean>
 </beans>

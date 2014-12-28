@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 指定由Spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法的调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+
+	<package name="pat" extends="struts-default" namespace="/dwz/pat">
+		<!-- <action name="advList" class="com.neusoft.pat.action.ToAdvList">
+			<result name="success">/WEB-INF/jsp/pat/checkMoney.jsp</result>
+		</action> -->
+		<action name="checkLeftMoney" class="com.neusoft.pat.action.CheckMoney">
+			<result name="success">/WEB-INF/jsp/pat/checkMoney.jsp</result>
+		</action>
+		<action name="*" class="com.neusoft.pat.action.ToPage" method="{1}Page">
+			<result name="checkMoney">/WEB-INF/jsp/pat/checkMoney.jsp</result>
+			<result name="advList">/WEB-INF/jsp/pat/advList.jsp</result>
+			<result name="decuteMoney">/WEB-INF/jsp/pat/decuteMoney.jsp</result>
+		</action>
+		<action name="checkMoneyDetail" class="com.neusoft.pat.action.CheckMoneyDetail">
+			<result name="success">/WEB-INF/jsp/pat/detailMoney.jsp</result>
+		</action>
+		<action name="decuteMoneyDay" class="com.neusoft.pat.action.DecuteMoneyAction">
+			<result name="success">/WEB-INF/jsp/pat/decuteMoney.jsp</result>
+		</action>
+		<action name="dcMoney" class="com.neusoft.pat.action.DCAction">
+			<result name="success">/WEB-INF/jsp/pat/decuteMoney.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<action name="toCheckLeftMoney" class="com.neusoft.pat.action.ToCLMAction">
+			<result name="success">/jsp/pat/MyHtml.html</result>
+		</action>
+	</package>
+</struts>   

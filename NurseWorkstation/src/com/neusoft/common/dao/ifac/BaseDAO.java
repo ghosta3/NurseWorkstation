@@ -2,9 +2,6 @@ package com.neusoft.common.dao.ifac;
 
 import java.util.List;
 
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
-
 /**
  * @author Ghost
  *
@@ -27,6 +24,4 @@ public interface BaseDAO<T,E> {
 	 * @return 查找到的实体集合
 	 */
 	public List<E> findByLimit(int startIdx,int maxNum);
-	
-	public List<E> findWithConditionByLimit(int startIdx,int maxNum, Criterion[] criterions);
 }

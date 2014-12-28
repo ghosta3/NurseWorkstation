@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <include file="struts-ghost.xml" location="10,10" size="150,30" />
+  <include file="struts-don.xml" location="10,115" size="150,30" />
+  <include file="struts-pat.xml" location="105,273" size="150,30" />
+</Struts2Diagram>
+

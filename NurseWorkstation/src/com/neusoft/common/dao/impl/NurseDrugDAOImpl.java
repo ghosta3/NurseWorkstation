@@ -1,5 +1,8 @@
 package com.neusoft.common.dao.impl;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 import com.neusoft.common.dao.ifac.BaseDAO;
 import com.neusoft.common.dao.ifac.HospitalBedlevelDAO;
 import com.neusoft.common.dao.ifac.HospitalDischargeDAO;
@@ -13,6 +16,28 @@ public class NurseDrugDAOImpl extends BaseDAOImpl<String, NurseDrug> implements
 
 	public NurseDrugDAOImpl() {
 		super(NurseDrug.class);
+	}
+
+	@Override
+	public NurseDrug findDrugPriceByName(String drugName) {
+		String hql = "from NurseDrug as d where drugName = ?";
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+		query.setParameter(0, drugName);
+		NurseDrug drug = (NurseDrug) query.list().get(0);
+		System.out.println(drug.getDrugName() +"name");
+		return drug;
+	}
+
+	@Override
+	public NurseDrug findByDrugName(String drugName) {
+		// TODO Auto-generated method stub
+		String hql = "from NurseDrug as d where drugName = ?";
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+		query.setParameter(0, "阿莫西林");
+		NurseDrug drug = (NurseDrug) query.list().get(0);
+		return drug;
 	}
 
 }

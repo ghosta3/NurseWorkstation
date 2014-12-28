@@ -7,9 +7,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,13 +20,14 @@ import com.neusoft.common.dao.ifac.BaseDAO;
  * @param <E> 实体类的类型
  */
 public class BaseDAOImpl<T,E> extends HibernateDaoSupport implements BaseDAO<T, E> {
-	private Class entityClass;
+	private Class<E> entityClass;
 	
 	/**
 	 * @param entityClass 实体类的class
 	 */
 	public BaseDAOImpl(Class entityClass){
 		this.entityClass = entityClass;
+		
 	}
 
 	@Override
@@ -74,15 +72,6 @@ public class BaseDAOImpl<T,E> extends HibernateDaoSupport implements BaseDAO<T, 
 		query.setMaxResults(maxNum);
 		
 	 	return query.list();
-	}
-
-	@Override
-	public List<E> findWithConditionByLimit(int startIdx, int maxNum,
-			Criterion[] criterions ) {
-		DetachedCriteria queryCriteria = DetachedCriteria.forClass(entityClass);
-		for(Criterion c : criterions)
-			queryCriteria.add(c);		
-		return getHibernateTemplate().findByCriteria(queryCriteria, startIdx, maxNum);
 	}
 
 }

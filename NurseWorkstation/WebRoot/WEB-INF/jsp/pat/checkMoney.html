@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<script type="text/javascript">
+function show(){
+		document.getElementById("check_money").style.display="block";
+		
+}
+</script>
+
+<body>
+<div class="pageHeader">
+<p>余额查询：</p>
+<form id="form1" name="form1" method="post" action="">
+  病人姓名: <input type="text" /><br/><br/>
+  病房号&nbsp;&nbsp;: <input type="text" /><br/><br/>
+  床位号&nbsp;&nbsp;: <input type="text" /><br/><br/>
+  开始日期: <input type="text" /> ------ 结束日期: <input type="text" /><br/><br/>
+  
+  <!--<input type="submit" value="查询" onclick="check()" />  -->
+ </div>
+  
+</form>
+<div  class="buttonContent">
+<button id="show" onclick="show()" >查询</button></div>
+<p>&nbsp;</p>
+<div id="check_money" style="display:none;">
+<hr/>
+
+<table class="table" width="644" height="134" border="1" cellpadding="0" cellspacing="0" >
+  <thead>
+			<tr>
+				<th width="120">病人姓名</th>
+				<th width="80">病房号</th>
+				<th width="100">床位号</th>
+				<th width="150">消费信息</th>
+				<th width="80" align="center">床位费</th>
+				<th width="80">药物费</th>
+				<th width="80">其他消费</th>
+				<th width="80">该天总计</th>
+			</tr>
+  </thead>
+  <tbody>
+	  <tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	  </tr>
+  </tbody>
+</table>
+<p></p>
+<p>余额：300.00元</p>
+</div>
+</body>
+</html>
