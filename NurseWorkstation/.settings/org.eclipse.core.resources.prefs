@@ -1,3 +1,4 @@
+#Mon Dec 29 00:13:51 CST 2014
 eclipse.preferences.version=1
 encoding//WebRoot/WEB-INF/jsp/bedio/bedshowcontent.jsp=UTF-8
 encoding//WebRoot/dwz/demo_page1.html=UTF-8
@@ -5,4 +6,5 @@ encoding//WebRoot/dwz/demo_page4.html=UTF-8
 encoding//WebRoot/dwz/index.html=UTF-8
 encoding//src/com/neusoft/common/dao/impl/NurseBeginDAOImpl.java=UTF-8
 encoding//src/com/neusoft/common/dao/impl/NursePatDAOImpl.java=UTF-8
+encoding//src/com/neusoft/common/domain/NurseConsumInfo.java=gbk
 encoding//src/com/neusoft/patientio/utils/AjaxUtil.java=UTF-8

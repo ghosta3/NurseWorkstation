@@ -22,9 +22,10 @@ public class NurseAdvingDAOImpl extends BaseDAOImpl<String, NurseAdving> impleme
 	@Override
 	public List<NurseAdving> findAdvingByAdvId(String advId) {
 		String hql = "from NurseAdving na where na.nurseAdv.advId = '" + advId + "'";
-		Session session = getSession();
-		Query query = session.createQuery(hql);
-		return query.list();
+//		Session session = getSession();
+//		Query query = session.createQuery(hql);
+//		return query.list();
+		return getHibernateTemplate().find(hql);
 	}
 
 }

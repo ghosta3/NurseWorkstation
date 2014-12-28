@@ -42,16 +42,17 @@ public class NurseBeginDAOImpl extends
 		if(hql.lastIndexOf("where ")==hql.length() -6)
 		      hql=hql.substring(0,hql.lastIndexOf("where ")) ;
 		System.out.println(hql);
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery(hql);
-		System.out.println(query.list().size());
-		return query.list();
+//		Session session = getHibernateTemplate().getSessionFactory().openSession();
+//		Query query = session.createQuery(hql);
+//		System.out.println(query.list().size());
+//		return query.list();
+		return getHibernateTemplate().find(hql);
 	}
 
 	@Override
 	public List<NurseBegin> findNurseBeginByPatOrWork(String patName,
 			String workName) {
-String hql = "from NurseBegin as nb where ";
+		String hql = "from NurseBegin as nb where ";
 		
 		if(patName.length() > 0){
 			hql = hql + " nb.nursePat.patName like '%" + patName + "%' and ";
@@ -63,11 +64,12 @@ String hql = "from NurseBegin as nb where ";
 		      hql=hql.substring(0,hql.lastIndexOf("and ")) ;
 		if(hql.lastIndexOf("where ")==hql.length() -6)
 		      hql=hql.substring(0,hql.lastIndexOf("where ")) ;
-		System.out.println(hql);
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery(hql);
-		System.out.println(query.list().size());
-		return query.list();
+//		System.out.println(hql);
+//		Session session = getHibernateTemplate().getSessionFactory().openSession();
+//		Query query = session.createQuery(hql);
+//		System.out.println(query.list().size());
+//		return query.list();
+		return getHibernateTemplate().find(hql);
 	}
 
 	@Override

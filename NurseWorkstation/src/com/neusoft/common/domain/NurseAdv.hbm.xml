@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.neusoft.common.domain.NurseAdv" table="NURSE_ADV_TAB" schema="SCOTT">
-        <id name="advId" type="java.lang.String">
-            <column name="ADV_ID" length="21" />
-        </id>
-        <many-to-one name="nursePat" class="com.neusoft.common.domain.NursePat" fetch="select">
-            <column name="PAT_ID" length="5" not-null="true" />
-        </many-to-one>
-        <many-to-one name="nurseWork" class="com.neusoft.common.domain.NurseWork" fetch="select">
-            <column name="WORK_ID" length="5" not-null="true" />
-        </many-to-one>
-        <property name="advText" type="java.lang.String">
-            <column name="ADV_TEXT" length="1000" />
-        </property>
-        <property name="advBigTime" type="java.util.Date">
-            <column name="ADV_BIG_TIME" length="7" />
-        </property>
-        <property name="advEndTime" type="java.util.Date">
-            <column name="ADV_END_TIME" length="7" />
-        </property>
-        <property name="advStat" type="java.lang.String">
-            <column name="ADV_STAT" length="1" />
-        </property>
-        <set name="nurseAdvings" inverse="true">
-            <key>
-                <column name="ADV_ID" length="21" not-null="true" />
-            </key>
-            <one-to-many class="com.neusoft.common.domain.NurseAdving" />
-        </set>
-    </class>
+ <class name="com.neusoft.common.domain.NurseAdv" schema="SCOTT" table="NURSE_ADV_TAB">
+  <id name="advId" type="java.lang.String">
+   <column length="21" name="ADV_ID"/>
+  </id>
+  <many-to-one class="com.neusoft.common.domain.NursePat" fetch="select"
+   lazy="false" name="nursePat">
+   <column length="5" name="PAT_ID" not-null="true"/>
+  </many-to-one>
+  <many-to-one class="com.neusoft.common.domain.NurseWork"
+   fetch="select" lazy="false" name="nurseWork">
+   <column length="5" name="WORK_ID" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="advText" type="java.lang.String">
+   <column length="1000" name="ADV_TEXT"/>
+  </property>
+  <property generated="never" lazy="false" name="advBigTime" type="java.util.Date">
+   <column length="7" name="ADV_BIG_TIME"/>
+  </property>
+  <property generated="never" lazy="false" name="advEndTime" type="java.util.Date">
+   <column length="7" name="ADV_END_TIME"/>
+  </property>
+  <property generated="never" lazy="false" name="advStat" type="java.lang.String">
+   <column length="1" name="ADV_STAT"/>
+  </property>
+  <set inverse="true" name="nurseAdvings" sort="unsorted">
+   <key>
+    <column length="21" name="ADV_ID" not-null="true"/>
+   </key>
+   <one-to-many class="com.neusoft.common.domain.NurseAdving"/>
+  </set>
+ </class>
 </hibernate-mapping>

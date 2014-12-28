@@ -35,11 +35,13 @@ public class NurseAdvDAOImpl extends BaseDAOImpl<String, NurseAdv> implements Nu
 		if(hql.lastIndexOf("where ")==hql.length() -6)
 		      hql=hql.substring(0,hql.lastIndexOf("where ")) ;
 		
-		System.out.println(hql);
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery(hql);
-		System.out.println(query.list().size());
-		return query.list();
+//		System.out.println(hql);
+//		Session session = getHibernateTemplate().getSessionFactory().openSession();
+//		Query query = session.createQuery(hql);
+//		System.out.println(query.list().size());
+//		
+//		return query.list();
+		return getHibernateTemplate().find(hql);
 	}
 
 	@Override

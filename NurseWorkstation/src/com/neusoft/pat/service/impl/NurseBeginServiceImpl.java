@@ -72,7 +72,7 @@ public class NurseBeginServiceImpl implements NurseBeginService  {
 		//通过patId查找到对于的住院登记表
 		NurseBegin begin =  this.nurseBeginDAO.findBeginByPatId(patId);
 		Double beforeMoney = begin.getDepoMoney();
-		begin.setDepoMoney(beforeMoney-consumMoney);
+		begin.setLeftMoney(beforeMoney-consumMoney);
 		this.nurseBeginDAO.update(begin);
 		//更改住院登记表余额
 		

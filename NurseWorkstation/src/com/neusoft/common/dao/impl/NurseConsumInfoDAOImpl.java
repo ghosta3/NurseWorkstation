@@ -26,18 +26,20 @@ public class NurseConsumInfoDAOImpl extends
 		// TODO Auto-generated method stub
 		System.out.println(pat.getPatName()+"eee");
 		String hql = "from NurseConsumInfo nurseConsumInfo where nurseConsumInfo.nursePat = '" + pat + "'";
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery(hql);
-		return query.list();
+//		Session session = getHibernateTemplate().getSessionFactory().openSession();
+//		Query query = session.createQuery(hql);
+//		return query.list();
+		return getHibernateTemplate().find(hql);
 	}
 
 	@Override
 	public List<NurseConsumInfo> findComsumInfoByPatId(String patId) {
 		// TODO Auto-generated method stub
 		String hql = "from NurseConsumInfo nurseConsumInfo where nurseConsumInfo.nursePat.patId = '" + String.format("%-5s",patId) + "'";
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		Query query = session.createQuery(hql);
-		return query.list();
+//		Session session = getHibernateTemplate().getSessionFactory().openSession();
+//		Query query = session.createQuery(hql);
+//		return query.list();
+		return getHibernateTemplate().find(hql);
 	}
 	
 	
