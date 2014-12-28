@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 指定由spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 设置Struts2允许动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="nurseBed" namespace="/*/nurseBed" extends="json-default">
+		<action name="*" class="com.neusoft.bedio.action.NurseBedAction" method="{1}">
+			<result name="findall">/WEB-INF/jsp/bedio/bedmanage.jsp</result>
+			<result name="showadd">/WEB-INF/jsp/bedio/bedadd.jsp</result>
+			<result name="find">/WEB-INF/jsp/bedio/bedupdate.jsp</result>
+			<result type="json" name="add">
+				<param name="root">data</param>
+			</result>
+			<result type="json" name="delete">
+				<param name="root">data</param>
+			</result>
+			<result type="json" name="update">
+				<param name="root">data</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="showbed" namespace="/*/showbed" extends="json-default">
+		<action name="*" class="com.neusoft.bedio.action.BedShowAction" method="{1}">
+			<result name="showdepartment">/WEB-INF/jsp/bedio/departmentshow.jsp</result>
+			<result name="showbed">/WEB-INF/jsp/bedio/bedshow.jsp</result>
+		</action>
+	</package>
+	
+	
+	
+</struts>    

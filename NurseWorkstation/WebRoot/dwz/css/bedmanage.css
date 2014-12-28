@@ -1,0 +1,14 @@
+/**---------------------
+ *bedmanage
+ ---------------------*/
+#bed {
+	width:120px;
+	height:120px;
+	float:left;
+	cursor:pointer;
+	padding: 50px 100px;
+}
+
+#bed a{
+	margin:20px;
+}
