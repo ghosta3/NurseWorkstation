@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="ghost" namespace="/dwz/patientio" extends="struts-default">
+		<action name="resident*" class="ResidentAction" method="resident{1}">
+			<result name="applyList">/WEB-INF/jsp/patientio/residentApply.jsp</result>
+			<result name="residentBeginPage">/WEB-INF/jsp/patientio/residentBegin.jsp</result>
+		</action>
+	</package>
+	<package name="ghost-json" namespace="/dwz/patientio" extends="json-default">
+		<action name="jsonResident*" class="ResidentAction" method="resident{1}">
+			<result type="json" name="jsonSuccess">
+				<param name="root">message</param>
+			</result>
+		</action>
+	</package>
+</struts>    

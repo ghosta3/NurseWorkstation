@@ -5,16 +5,13 @@
  <class name="com.neusoft.common.domain.NurseBed" schema="SCOTT" table="NURSE_BED_TAB">
   <id name="bedId" type="java.lang.String">
    <column length="5" name="BED_ID"/>
-   <generator class="sequence">
-    <param name="sequence">BED_SEQ</param>
-   </generator>
   </id>
   <many-to-one class="com.neusoft.common.domain.OfficeDepartment"
-   fetch="select" name="officeDepartment">
+   fetch="select" lazy="false" name="officeDepartment">
    <column length="4" name="OFFICE_ID" not-null="true"/>
   </many-to-one>
   <many-to-one class="com.neusoft.common.domain.HospitalBedlevel"
-   fetch="select" name="hospitalBedlevel">
+   fetch="select" lazy="false" name="hospitalBedlevel">
    <column name="LEVEL_ID" precision="2" scale="0"/>
   </many-to-one>
   <many-to-one class="com.neusoft.common.domain.NurseRoom"
@@ -26,3 +23,4 @@
   </property>
  </class>
 </hibernate-mapping>
+
