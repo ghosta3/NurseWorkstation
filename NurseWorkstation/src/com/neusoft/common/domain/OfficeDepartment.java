@@ -15,14 +15,16 @@ public class OfficeDepartment  implements java.io.Serializable {
      private String officName;
      private String deptName;
      private Set nurseBeds = new HashSet(0);
+     private Set nurseRooms = new HashSet(0);
 
     public OfficeDepartment() {
     }
 
-    public OfficeDepartment(String officName, String deptName, Set nurseBeds) {
+    public OfficeDepartment(String officName, String deptName, Set nurseBeds, Set nurseRooms) {
         this.officName = officName;
         this.deptName = deptName;
         this.nurseBeds = nurseBeds;
+        this.nurseRooms = nurseRooms;
     }
 
     public String getOfficId() {
@@ -59,4 +61,14 @@ public class OfficeDepartment  implements java.io.Serializable {
     public void setNurseBeds(Set nurseBeds) {
         this.nurseBeds = nurseBeds;
     }
+
+	public Set getNurseRooms() {
+		return nurseRooms;
+	}
+
+	public void setNurseRooms(Set nurseRooms) {
+		this.nurseRooms = nurseRooms;
+	}
+    
+    
 }

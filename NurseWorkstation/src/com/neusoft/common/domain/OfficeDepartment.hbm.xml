@@ -18,5 +18,11 @@
    </key>
    <one-to-many class="com.neusoft.common.domain.NurseBed"/>
   </set>
+   <set inverse="true" lazy="false" name="nurseRooms" sort="unsorted">
+   <key>
+    <column length="4" name="OFFICE_ID" not-null="true"/>
+   </key>
+   <one-to-many class="com.neusoft.common.domain.NurseRoom"/>
+  </set>
  </class>
 </hibernate-mapping>

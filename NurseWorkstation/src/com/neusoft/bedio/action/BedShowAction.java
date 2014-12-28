@@ -2,10 +2,12 @@ package com.neusoft.bedio.action;
 
 import java.util.List;
 
-import com.neusoft.bedio.service.ifac.NurseBedServiceIfac;
-import com.neusoft.bedio.service.ifac.OfficeDepartmentServiceIfac;
+import com.neusoft.bedio.service.ifac.NurseBedService;
+import com.neusoft.bedio.service.ifac.OfficeDepartmentService;
 import com.neusoft.common.domain.NurseBed;
+import com.neusoft.common.domain.NurseBegin;
 import com.neusoft.common.domain.OfficeDepartment;
+import com.neusoft.pat.service.ifac.NurseBeginService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BedShowAction extends ActionSupport{
@@ -13,28 +15,37 @@ public class BedShowAction extends ActionSupport{
 	private OfficeDepartment officeDepartment;
 	private List<NurseBed> nurseBedList;
 	private List<OfficeDepartment> officeDepartmentList;
+	private List<NurseBegin> nurseBeginList;
+	private String roomId;
 	
-	private OfficeDepartmentServiceIfac officeDepartmentServiceIfac;
-	private NurseBedServiceIfac nurseBedServiceIfac;
-	public void setNurseBedServiceIfac(NurseBedServiceIfac nurseBedServiceIfac) {
-		this.nurseBedServiceIfac = nurseBedServiceIfac;
+	private OfficeDepartmentService officeDepartmentService;
+	private NurseBedService nurseBedService;
+	private NurseBeginService nurseBeginService;
+	
+	public void setNurseBedService(NurseBedService nurseBedService) {
+		this.nurseBedService = nurseBedService;
 	}
-	public void setOfficeDepartmentServiceIfac(
-			OfficeDepartmentServiceIfac officeDepartmentServiceIfac) {
-		this.officeDepartmentServiceIfac = officeDepartmentServiceIfac;
+	public void setOfficeDepartmentService(
+			OfficeDepartmentService officeDepartmentService) {
+		this.officeDepartmentService = officeDepartmentService;
+	}
+	public void setNurseBeginService(NurseBeginService nurseBeginService) {
+		this.nurseBeginService = nurseBeginService;
 	}
 	
 	public String showDepartment(){
-		System.out.println("1111111111111");
-		officeDepartmentList = officeDepartmentServiceIfac.findAllOfficeDepartment();
-		System.out.println(officeDepartmentList.size());
+		officeDepartmentList = officeDepartmentService.findAllOfficeDepartment();
+		//System.out.println(officeDepartmentList.get(0).getNurseRooms().size());
 		return "showdepartment";
 	}
 	
 	public String showbed(){
-		nurseBedList = nurseBedServiceIfac.findAllNurseBed();
+		nurseBedList = nurseBedService.findByRoomId(roomId);
+		nurseBeginList = nurseBeginService.findAll();
+		System.out.println(nurseBeginList.size());
 		return "showbed";
 	}
+	
 	public OfficeDepartment getOfficeDepartment() {
 		return officeDepartment;
 	}
@@ -52,6 +63,18 @@ public class BedShowAction extends ActionSupport{
 	}
 	public void setOfficeDepartmentList(List<OfficeDepartment> officeDepartmentList) {
 		this.officeDepartmentList = officeDepartmentList;
+	}
+	public String getRoomId() {
+		return roomId;
+	}
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
+	}
+	public List<NurseBegin> getNurseBeginList() {
+		return nurseBeginList;
+	}
+	public void setNurseBeginList(List<NurseBegin> nurseBeginList) {
+		this.nurseBeginList = nurseBeginList;
 	}
 	
 	

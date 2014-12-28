@@ -13,13 +13,15 @@ public class NurseRoom  implements java.io.Serializable {
 
      private String roomId;
      private String roomInfo;
+     private OfficeDepartment officeDepartment;
      private Set nurseBeds = new HashSet(0);
 
     public NurseRoom() {
     }
 
-    public NurseRoom(String roomInfo, Set nurseBeds) {
+    public NurseRoom(String roomInfo, OfficeDepartment officeDepartment, Set nurseBeds) {
         this.roomInfo = roomInfo;
+        this.officeDepartment = officeDepartment;
         this.nurseBeds = nurseBeds;
     }
 
@@ -46,4 +48,14 @@ public class NurseRoom  implements java.io.Serializable {
     public void setNurseBeds(Set nurseBeds) {
         this.nurseBeds = nurseBeds;
     }
+
+	public OfficeDepartment getOfficeDepartment() {
+		return officeDepartment;
+	}
+
+	public void setOfficeDepartment(OfficeDepartment officeDepartment) {
+		this.officeDepartment = officeDepartment;
+	}
+    
+    
 }

@@ -169,16 +169,16 @@
 		
 	</bean>
 	
-	<bean id="nurseBedServiceIfac" class="com.neusoft.bedio.service.impl.NurseBedServiceImpl">
+	<bean id="nurseBedService" class="com.neusoft.bedio.service.impl.NurseBedServiceImpl">
    		<property name="nurseBedDAO" ref="nurseBedDAO"/>
 	</bean>
-	<bean id="nurseRoomServiceIfac" class="com.neusoft.bedio.service.impl.NurseRoomServiceImpl">
+	<bean id="nurseRoomService" class="com.neusoft.bedio.service.impl.NurseRoomServiceImpl">
    		<property name="nurseRoomDAO" ref="nurseRoomDAO"/>
 	</bean>
-	<bean id="officeDepartmentServiceIfac" class="com.neusoft.bedio.service.impl.OfficeDepartmentServiceImpl">
+	<bean id="officeDepartmentService" class="com.neusoft.bedio.service.impl.OfficeDepartmentServiceImpl">
    		<property name="officeDepartmentDAO" ref="officeDepartmentDAO"/>
 	</bean>
-	<bean id="hospitalBedlevelServiceIfac" class="com.neusoft.bedio.service.impl.HospitalBedlevelServiceImpl">
+	<bean id="hospitalBedlevelService" class="com.neusoft.bedio.service.impl.HospitalBedlevelServiceImpl">
    		<property name="hospitalBedlevelDAO" ref="hospitalBedlevelDAO"/>
 	</bean>
 	<!-- Service End -->

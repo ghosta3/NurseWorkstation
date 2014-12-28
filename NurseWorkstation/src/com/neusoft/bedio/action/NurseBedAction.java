@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.neusoft.bedio.service.ifac.HospitalBedlevelServiceIfac;
-import com.neusoft.bedio.service.ifac.NurseBedServiceIfac;
-import com.neusoft.bedio.service.ifac.NurseRoomServiceIfac;
-import com.neusoft.bedio.service.ifac.OfficeDepartmentServiceIfac;
+import com.neusoft.bedio.service.ifac.HospitalBedlevelService;
+import com.neusoft.bedio.service.ifac.NurseBedService;
+import com.neusoft.bedio.service.ifac.NurseRoomService;
+import com.neusoft.bedio.service.ifac.OfficeDepartmentService;
 import com.neusoft.common.domain.HospitalBedlevel;
 import com.neusoft.common.domain.NurseBed;
 import com.neusoft.common.domain.NurseRoom;
@@ -37,53 +37,52 @@ public class NurseBedAction extends ActionSupport implements
 		return nurseBed;
 	}
 
-	private NurseBedServiceIfac nurseBedServiceIfac;
-	private NurseRoomServiceIfac nurseRoomServiceIfac;
-	private OfficeDepartmentServiceIfac officeDepartmentServiceIfac;
-	private HospitalBedlevelServiceIfac hospitalBedlevelServiceIfac;
+	private NurseBedService nurseBedService;
+	private NurseRoomService nurseRoomService;
+	private OfficeDepartmentService officeDepartmentService;
+	private HospitalBedlevelService hospitalBedlevelService;
 
-	public void setNurseBedServiceIfac(NurseBedServiceIfac nurseBedServiceIfac) {
-		this.nurseBedServiceIfac = nurseBedServiceIfac;
+	public void setNurseBedService(NurseBedService nurseBedService) {
+		this.nurseBedService = nurseBedService;
 	}
 
-	public void setNurseRoomServiceIfac(
-			NurseRoomServiceIfac nurseRoomServiceIfac) {
-		this.nurseRoomServiceIfac = nurseRoomServiceIfac;
+	public void setNurseRoomService(NurseRoomService nurseRoomService) {
+		this.nurseRoomService = nurseRoomService;
 	}
 
-	public void setOfficeDepartmentServiceIfac(
-			OfficeDepartmentServiceIfac officeDepartmentServiceIfac) {
-		this.officeDepartmentServiceIfac = officeDepartmentServiceIfac;
+	public void setOfficeDepartmentService(
+			OfficeDepartmentService officeDepartmentService) {
+		this.officeDepartmentService = officeDepartmentService;
 	}
 
-	public void setHospitalBedlevelServiceIfac(
-			HospitalBedlevelServiceIfac hospitalBedlevelServiceIfac) {
-		this.hospitalBedlevelServiceIfac = hospitalBedlevelServiceIfac;
+	public void setHospitalBedlevelService(
+			HospitalBedlevelService hospitalBedlevelService) {
+		this.hospitalBedlevelService = hospitalBedlevelService;
 	}
 
 	// 查询用户
 	public String findall() {
-		nurseBedList = nurseBedServiceIfac.findAllNurseBed();
+		nurseBedList = nurseBedService.findAllNurseBed();
 		return "findall";
 	}
 
 	public String find() {
-		System.out.println(nurseBed.getBedId());
-		nurseRoomList = nurseRoomServiceIfac.findAllNurseRoom();
-		officeDepartmentList = officeDepartmentServiceIfac
+		nurseRoomList = nurseRoomService.findAllNurseRoom();
+		officeDepartmentList = officeDepartmentService
 				.findAllOfficeDepartment();
-		hospitalBedlevelList = hospitalBedlevelServiceIfac
+		hospitalBedlevelList = hospitalBedlevelService
 				.findAllHospitalBedlevel();
-		nurseBed = nurseBedServiceIfac.findById(nurseBed.getBedId());
+		nurseBed = nurseBedService.findById(nurseBed.getBedId());
 		return "find";
 	}
 
 	// 显示增加页面
 	public String showadd() {
-		nurseRoomList = nurseRoomServiceIfac.findAllNurseRoom();
-		officeDepartmentList = officeDepartmentServiceIfac
+		nurseRoomList = nurseRoomService.findAllNurseRoom();
+		officeDepartmentList = officeDepartmentService
 				.findAllOfficeDepartment();
-		hospitalBedlevelList = hospitalBedlevelServiceIfac
+		//System.out.println(officeDepartmentList.get(0).getNurseRooms().size());
+		hospitalBedlevelList = hospitalBedlevelService
 				.findAllHospitalBedlevel();
 		return "showadd";
 	}
@@ -92,17 +91,17 @@ public class NurseBedAction extends ActionSupport implements
 	public String add() {
 		data = new HashMap<String, Object>();
 		nurseBed.setBedState((byte) 0);
-		hospitalBedlevel = hospitalBedlevelServiceIfac.findById(nurseBed
+		hospitalBedlevel = hospitalBedlevelService.findById(nurseBed
 				.getHospitalBedlevel().getLevelId());
 		nurseBed.setHospitalBedlevel(hospitalBedlevel);
-		nurseRoom = nurseRoomServiceIfac.findById(nurseBed.getNurseRoom()
+		nurseRoom = nurseRoomService.findById(nurseBed.getNurseRoom()
 				.getRoomId());
 		nurseBed.setNurseRoom(nurseRoom);
-		officeDepartment = officeDepartmentServiceIfac.findById(nurseBed
+		officeDepartment = officeDepartmentService.findById(nurseBed
 				.getOfficeDepartment().getOfficId());
 		nurseBed.setOfficeDepartment(officeDepartment);
 
-		if (nurseBedServiceIfac.saveNurseBed(nurseBed)) {
+		if (nurseBedService.saveNurseBed(nurseBed)) {
 			data.put("statusCode", "200");
 			data.put("message", "添加成功!");
 			data.put("navTabId", "nurseBedList");
@@ -120,16 +119,16 @@ public class NurseBedAction extends ActionSupport implements
 	public String update() {
 		data = new HashMap<String, Object>();
 		nurseBed.setBedState((byte) 0);
-		hospitalBedlevel = hospitalBedlevelServiceIfac.findById(nurseBed
+		hospitalBedlevel = hospitalBedlevelService.findById(nurseBed
 				.getHospitalBedlevel().getLevelId());
 		nurseBed.setHospitalBedlevel(hospitalBedlevel);
-		nurseRoom = nurseRoomServiceIfac.findById(nurseBed.getNurseRoom()
+		nurseRoom = nurseRoomService.findById(nurseBed.getNurseRoom()
 				.getRoomId());
 		nurseBed.setNurseRoom(nurseRoom);
-		officeDepartment = officeDepartmentServiceIfac.findById(nurseBed
+		officeDepartment = officeDepartmentService.findById(nurseBed
 				.getOfficeDepartment().getOfficId());
 		nurseBed.setOfficeDepartment(officeDepartment);
-		if (nurseBedServiceIfac.updateNurseBed(nurseBed)) {
+		if (nurseBedService.updateNurseBed(nurseBed)) {
 			data.put("statusCode", "200");
 			data.put("message", "修改成功!");
 			data.put("navTabId", "nurseBedList");
@@ -146,10 +145,10 @@ public class NurseBedAction extends ActionSupport implements
 	// 删除
 	public String delete() {
 		data = new HashMap<String, Object>();
-		System.out.println(nurseBed.getBedId());
-		nurseBed = nurseBedServiceIfac.findById(nurseBed.getBedId()+" ");
-		System.out.println(nurseBed.getClass());
-		if (nurseBedServiceIfac.deleteNurseBed(nurseBed)) {
+		//System.out.println(nurseBed.getBedId());
+		nurseBed = nurseBedService.findById(nurseBed.getBedId()+" ");
+		//System.out.println(nurseBed.getClass());
+		if (nurseBedService.deleteNurseBed(nurseBed)) {
 			data.put("statusCode", "200");
 			data.put("message", "删除成功!");
 			data.put("navTabId", "nurseBedList");

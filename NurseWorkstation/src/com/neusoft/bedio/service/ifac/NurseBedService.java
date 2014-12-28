@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.neusoft.common.domain.NurseBed;
 
-public interface NurseBedServiceIfac {
+public interface NurseBedService {
 
 	public boolean saveNurseBed(NurseBed nurseBed);
 
@@ -13,6 +13,8 @@ public interface NurseBedServiceIfac {
 	public boolean deleteNurseBed(NurseBed nurseBed);
 	
 	public List<NurseBed> findAllNurseBed();
+	
+	public List<NurseBed> findByRoomId(String id);
 	
 	public NurseBed findById(String id);
 }

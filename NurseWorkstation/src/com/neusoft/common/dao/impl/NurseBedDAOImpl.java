@@ -1,5 +1,10 @@
 package com.neusoft.common.dao.impl;
 
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 import com.neusoft.common.dao.ifac.BaseDAO;
 import com.neusoft.common.dao.ifac.HospitalBedlevelDAO;
 import com.neusoft.common.dao.ifac.HospitalDischargeDAO;
@@ -13,6 +18,14 @@ public class NurseBedDAOImpl extends
 
 	public NurseBedDAOImpl() {
 		super(NurseBed.class);
+	}
+
+	@Override
+	public List<NurseBed> findByRoomId(String roomId) {
+		String hql = "from NurseBed n where n.nurseRoom.roomId = '" + roomId + "'";
+//		Session session = getHibernateTemplate().find(hql);
+//		Query query = session.createQuery(hql);
+		return getHibernateTemplate().find(hql);
 	}
 
 }

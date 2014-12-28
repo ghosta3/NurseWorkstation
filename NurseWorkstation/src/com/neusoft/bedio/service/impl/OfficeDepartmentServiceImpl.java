@@ -1,11 +1,11 @@
 package com.neusoft.bedio.service.impl;
 
 import java.util.List;
-import com.neusoft.bedio.service.ifac.OfficeDepartmentServiceIfac;
+import com.neusoft.bedio.service.ifac.OfficeDepartmentService;
 import com.neusoft.common.dao.ifac.OfficeDepartmentDAO;
 import com.neusoft.common.domain.OfficeDepartment;
 
-public class OfficeDepartmentServiceImpl implements OfficeDepartmentServiceIfac{
+public class OfficeDepartmentServiceImpl implements OfficeDepartmentService{
 
 	private OfficeDepartmentDAO officeDepartmentDAO;
 	

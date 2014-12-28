@@ -2,11 +2,11 @@ package com.neusoft.bedio.service.impl;
 
 import java.util.List;
 
-import com.neusoft.bedio.service.ifac.HospitalBedlevelServiceIfac;
+import com.neusoft.bedio.service.ifac.HospitalBedlevelService;
 import com.neusoft.common.dao.ifac.HospitalBedlevelDAO;
 import com.neusoft.common.domain.HospitalBedlevel;
 
-public class HospitalBedlevelServiceImpl implements HospitalBedlevelServiceIfac{
+public class HospitalBedlevelServiceImpl implements HospitalBedlevelService{
 
 	private HospitalBedlevelDAO hospitalBedlevelDAO;
 	

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.neusoft.common.domain.NurseRoom;
 
-public interface NurseRoomServiceIfac {
+public interface NurseRoomService {
 
 	public List<NurseRoom> findAllNurseRoom();
 	

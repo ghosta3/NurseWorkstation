@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.neusoft.common.domain.OfficeDepartment;
 
-public interface OfficeDepartmentServiceIfac {
+public interface OfficeDepartmentService {
 
 	public boolean saveOfficeDepartment(OfficeDepartment officeDepartment);
 
